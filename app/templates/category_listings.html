@@ -15,81 +15,89 @@
     />
   </head>
   <body>
-    <nav
-      class="navbar navbar-expand-sm navbar-dark"
-      style="background-color: #023862"
-    >
-      <a class="navbar-brand" href="{{url_for('index')}}">The Garage</a>
-      <button
-        class="navbar-toggler d-lg-none bg-light"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      ></button>
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="{{url_for('index')}}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('garage')}}">Your Garage</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('thelot')}}">The Lot</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('contactus')}}">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('aboutus')}}">About Us</a>
-          </li>
-        </ul>
-        <form
-          class="form-inline my-2 my-lg-0"
-          action="{{ url_for('search') }}"
-          method="get"
-        >
-          <input
-            class="form-control mr-sm-2"
-            type="text"
-            placeholder="Search"
-            name="query"
-          />
-          <button class="btn btn-success my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-    </nav>
-    <div class="container">
-      <h1>{{ category.category_name }} Listings</h1>
-      <div class="row">
-        {% for car in car_listings %}
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <img
-              src="{{ url_for('static', filename=car.image_url.split('static/')[-1]) }}"
-              class="card-img-top"
-              alt="{{ car.make }} {{ car.model }}"
-              style="height: 200px; object-fit: cover"
-            />
-            <div class="card-body">
-              <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
-              <p class="card-text">
-                {{ car.year }} - {{ car.mileage }} km - ${{ car.price }}
-              </p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-      <a href="{{ url_for('index') }}" class="btn btn-secondary"
-        >Back to Home</a
+    <header>
+      <nav
+        class="navbar navbar-expand-sm navbar-dark"
+        style="background-color: #023862"
       >
-    </div>
+        <a class="navbar-brand" href="{{url_for('index')}}">The Garage</a>
+        <button
+          class="navbar-toggler d-lg-none bg-light"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        ></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url_for('index')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('garage')}}">Your Garage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('thelot')}}">The Lot</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('contactus')}}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('aboutus')}}">About Us</a>
+            </li>
+          </ul>
+          <form
+            class="form-inline my-2 my-lg-0"
+            action="{{ url_for('search') }}"
+            method="get"
+          >
+            <input
+              class="form-control mr-sm-2"
+              type="text"
+              placeholder="Search"
+              name="query"
+            />
+            <button class="btn btn-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="container mt-5">
+        <h1>{{ category.category_name }} Listings</h1>
+        <section>
+          <div class="row">
+            {% for car in car_listings %}
+            <div class="col-md-3 mb-4">
+              <div class="card h-100">
+                <img
+                  src="{{ url_for('static', filename=car.image_url.split('static/')[-1]) }}"
+                  class="card-img-top"
+                  alt="{{ car.make }} {{ car.model }}"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
+                  <p class="card-text">{{ car.description }}</p>
+                  <p class="card-text">Price: ${{ car.price }}</p>
+                </div>
+                <div class="card-footer">
+                  <a
+                    href="{{ url_for('cardetails', id=car.car_id) }}"
+                    class="btn btn-primary"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

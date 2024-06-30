@@ -1,3 +1,6 @@
+# Description: This script is used to seed the database with sample data.
+# This is used as we don't have a user interface to add data to the database.
+
 from app import db, create_app
 from app.models import User, CarListing, Category, Garage, CarListingCategory
 
