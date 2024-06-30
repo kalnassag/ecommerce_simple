@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Your Garage</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-sm navbar-dark"
+        style="background-color: #023862"
+      >
+        <a class="navbar-brand" href="{{url_for('index')}}">The Garage</a>
+        <button
+          class="navbar-toggler d-lg-none bg-light"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        ></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url_for('index')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('garage')}}">Your Garage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('thelot')}}">The Lot</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('contactus')}}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('aboutus')}}">About Us</a>
+            </li>
+          </ul>
+          <form
+            class="form-inline my-2 my-lg-0"
+            action="{{ url_for('search') }}"
+            method="get"
+          >
+            <input
+              class="form-control mr-sm-2"
+              type="text"
+              placeholder="Search"
+              name="query"
+            />
+            <button class="btn btn-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <section>
+      <div class="container mt-5">
+        <h1>{{ user.name }}'s Garage</h1>
+        <div class="row">
+          {% for car in cars %} {% if car %}
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="{{ url_for('static', filename=car.image_url.split('static/')[-1]) }}"
+                class="card-img-top"
+                alt="{{ car.make }} {{ car.model }}"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
+                <p class="card-text">{{ car.description }}</p>
+                <p class="card-text">Price: ${{ car.price }}</p>
+                <a
+                  href="{{ url_for('cardetails', id=car.car_id) }}"
+                  class="btn btn-primary"
+                  >Details</a
+                >
+                <a
+                  href="{{ url_for('remove_from_garage', car_id=car.car_id) }}"
+                  class="btn btn-danger"
+                  >Remove from Garage</a
+                >
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <div class="col-md-4">
+            <p>No car found in this slot.</p>
+          </div>
+          {% endif %} {% endfor %}
+        </div>
+        <a href="{{ url_for('thelot') }}" class="btn btn-secondary"
+          >Back to Listings</a
+        >
+        <div class="mt-4">
+          <a href="{{ url_for('checkout') }}" class="btn btn-success"
+            >Proceed to Checkout</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <footer class="footer">
+      <section>
+        <div class="container text-center my-5">
+          <p>&copy; 2024 The Garage. All Rights Reserved.</p>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>

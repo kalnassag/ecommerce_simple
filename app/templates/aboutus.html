@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>About Us</title>
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-sm navbar-dark"
+        style="background-color: #023862"
+      >
+        <a class="navbar-brand" href="{{url_for('index')}}">The Garage</a>
+        <button
+          class="navbar-toggler d-lg-none bg-light"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        ></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url_for('index')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('garage')}}">Your Garage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('thelot')}}">The Lot</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('contactus')}}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('aboutus')}}">About Us</a>
+            </li>
+          </ul>
+          <form
+            class="form-inline my-2 my-lg-0"
+            action="{{ url_for('search') }}"
+            method="get"
+          >
+            <input
+              class="form-control mr-sm-2"
+              type="text"
+              placeholder="Search"
+              name="query"
+            />
+            <button class="btn btn-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="display-4 text-center my-5">About Us</h1>
+          </div>
+          <div class="col-md-6">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+              sequi, animi nostrum accusamus ad iure possimus expedita nulla
+              recusandae accusantium officiis ipsa! Sint fuga ratione
+              consequuntur molestias? Corporis, assumenda quam.
+            </p>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas
+              enim eveniet quod amet consequatur facere obcaecati! Modi,
+              adipisci magnam exercitationem dolor iure doloremque ipsum
+              consectetur quibusdam facere quia, tenetur beatae!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+              rem reprehenderit aspernatur odit, earum veniam id ipsa quas
+              accusantium neque, tempore atque! Minus accusantium magni
+              doloribus magnam nisi numquam! Laudantium!
+            </p>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est,
+              nihil asperiores quo natus a maxime doloribus voluptas placeat
+              labore possimus repellendus molestiae repellat mollitia, ducimus
+              consequuntur odio impedit quas aut?
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img src="./static/IMG/car3.jpg" class="img-fluid" alt="Car" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <footer class="footer">
+      <section>
+        <div class="container text-center my-5">
+          <p>&copy; 2024 The Garage. All Rights Reserved.</p>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
